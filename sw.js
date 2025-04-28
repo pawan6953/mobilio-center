@@ -24,7 +24,6 @@ const urlsToCache = [
   '/images/s23+.jpg',
 ];
 
-// Install - cache files
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -33,7 +32,6 @@ self.addEventListener('install', event => {
   self.skipWaiting();
 });
 
-// Activate - delete old caches
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames =>
@@ -49,7 +47,6 @@ self.addEventListener('activate', event => {
   self.clients.claim();
 });
 
-// Fetch - serve from cache
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)

@@ -1,4 +1,4 @@
-// Service Worker registration
+
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('sw.js')
@@ -7,7 +7,7 @@ if ('serviceWorker' in navigator) {
     });
   }
   
-  // Add to Cart
+ 
   function addToCart(name, price) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     cart.push({ name, price });
@@ -15,7 +15,7 @@ if ('serviceWorker' in navigator) {
     alert(name + " added to cart!");
   }
   
-  // Display Cart
+
   function displayCart() {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     let cartContainer = document.getElementById('cart-items');
@@ -39,23 +39,22 @@ if ('serviceWorker' in navigator) {
     }
   }
   
-  // Clear Cart
+
   function clearCart() {
     localStorage.removeItem('cart');
     displayCart();
   }
-  
-  // Auto Display Cart
+
   if (window.location.pathname.includes('cart.html')) {
     displayCart();
   }
 
-  // Detect offline
+
 window.addEventListener('offline', function() {
   alert('You are offline. Please check your internet connection.');
 });
 
-// Detect back online (optional)
+
 window.addEventListener('online', function() {
   alert('You are back online!');
 });
